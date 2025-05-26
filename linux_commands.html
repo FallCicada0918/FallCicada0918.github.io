@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>设计模式</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 20px;
+      background: linear-gradient(#2b1055, #7597de);
+      color: #fff;
+    }
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 50px;
+      background: rgba(0, 0, 0, 0.5);
+    }
+    header .logo {
+      font-size: 1.5em;
+      font-weight: bold;
+      text-decoration: none;
+      color: #fff;
+    }
+    header ul {
+      list-style: none;
+      display: flex;
+      gap: 15px;
+    }
+    header ul li a {
+      text-decoration: none;
+      color: #fff;
+      padding: 5px 10px;
+      border-radius: 5px;
+      transition: background 0.3s;
+    }
+    header ul li a:hover {
+      background: #fff;
+      color: #2b1055;
+    }
+    .content {
+      max-width: 800px;
+      margin: 50px auto;
+      padding: 20px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    }
+    .content h1 {
+      font-size: 2.5em;
+      margin-bottom: 20px;
+    }
+    .content p {
+      font-size: 1.2em;
+      line-height: 1.8;
+    }
+    code {
+      display: inline-block;
+      background-color: #2d2d2d;
+      color: #f8f8f2;
+      padding: 2px 5px;
+      border-radius: 3px;
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 0.95em;
+      white-space: nowrap;
+    }
+    code_block {
+      display: block;
+      background-color: #2d2d2d;
+      color: #f8f8f2;
+      padding: 10px;
+      border-radius: 5px;
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 1em;
+      overflow-x: auto;
+      white-space: pre-wrap;
+      line-height: 1.5;
+    }
+    #projects {
+      max-height: 500px;
+      overflow-y: auto;
+      padding: 20px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.1);
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="index.html" class="logo">FallCicada</a>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="index.html#resume">About Me</a></li>
+      <li><a href="blog_home.html">Blog</a></li>
+    </ul>
+  </header>
+  <div class="content">
+        <h1>Linux 常用指令详解</h1>
+
+        <h2>1. 文件和目录操作</h2>
+        <p>以下是一些常用的文件和目录操作指令：</p>
+        <ul>
+            <li><code>ls</code>: 列出目录内容</li>
+            <li><code>cd</code>: 切换目录</li>
+            <li><code>pwd</code>: 显示当前工作目录</li>
+            <li><code>mkdir</code>: 创建新目录</li>
+            <li><code>rm</code>: 删除文件或目录</li>
+        </ul>
+        <pre><code_block># 示例
+ls -l
+cd /home/user
+pwd
+mkdir new_folder
+rm -r old_folder</code_block></pre>
+
+        <h2>2. 文件内容查看</h2>
+        <p>以下指令用于查看文件内容：</p>
+        <ul>
+            <li><code>cat</code>: 显示文件内容</li>
+            <li><code>more</code>: 分页显示文件内容</li>
+            <li><code>less</code>: 分页显示文件内容，支持上下滚动</li>
+            <li><code>head</code>: 显示文件的前几行</li>
+            <li><code>tail</code>: 显示文件的后几行</li>
+        </ul>
+        <pre><code_block># 示例
+cat file.txt
+more file.txt
+less file.txt
+head -n 10 file.txt
+tail -n 10 file.txt</code_block></pre>
+
+        <h2>3. 权限管理</h2>
+        <p>以下指令用于管理文件和目录的权限：</p>
+        <ul>
+            <li><code>chmod</code>: 修改文件权限</li>
+            <li><code>chown</code>: 修改文件所有者</li>
+            <li><code>chgrp</code>: 修改文件所属组</li>
+        </ul>
+        <pre><code_block># 示例
+chmod 755 script.sh
+chown user:group file.txt
+chgrp group_name file.txt</code_block></pre>
+
+        <h2>4. 系统管理</h2>
+        <p>以下指令用于系统管理：</p>
+        <ul>
+            <li><code>ps</code>: 显示当前运行的进程</li>
+            <li><code>top</code>: 实时显示系统资源使用情况</li>
+            <li><code>df</code>: 显示磁盘使用情况</li>
+            <li><code>du</code>: 显示目录或文件的大小</li>
+            <li><code>uptime</code>: 显示系统运行时间</li>
+        </ul>
+        <pre><code_block># 示例
+ps aux
+top
+df -h
+du -sh /home/user
+uptime</code_block></pre>
+
+        <h2>5. 网络操作</h2>
+        <p>以下指令用于网络相关操作：</p>
+        <ul>
+            <li><code>ping</code>: 测试网络连通性</li>
+            <li><code>ifconfig</code>: 显示或配置网络接口</li>
+            <li><code>netstat</code>: 显示网络连接状态</li>
+            <li><code>curl</code>: 发送 HTTP 请求</li>
+            <li><code>wget</code>: 下载文件</li>
+        </ul>
+        <pre><code_block># 示例
+ping www.google.com
+ifconfig
+netstat -an
+curl http://example.com
+wget http://example.com/file.zip</code_block></pre>
+
+        <h2>6. 压缩与解压</h2>
+        <p>以下指令用于文件的压缩与解压：</p>
+        <ul>
+            <li><code>tar</code>: 打包文件</li>
+            <li><code>gzip</code>: 压缩文件</li>
+            <li><code>unzip</code>: 解压 ZIP 文件</li>
+        </ul>
+        <pre><code_block># 示例
+# 打包并压缩
+ tar -czvf archive.tar.gz folder_name
+
+# 解压
+ tar -xzvf archive.tar.gz
+
+# 解压 ZIP 文件
+ unzip file.zip</code_block></pre>
+    </div>
+</body>
+</html>

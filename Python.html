@@ -1,0 +1,157 @@
+<!--
+ * @Description: 
+ * @Author: FallCicada
+ * @Date: 2025-05-25 18:54:11
+ * @LastEditors: FallCicada
+ * @LastEditTime: 2025-05-25 19:16:32
+ * @Slogan: 無限進步
+-->
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Python</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 20px;
+      background: linear-gradient(#2b1055, #7597de);
+      color: #fff;
+    }
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 50px;
+      background: rgba(0, 0, 0, 0.5);
+    }
+    header .logo {
+      font-size: 1.5em;
+      font-weight: bold;
+      text-decoration: none;
+      color: #fff;
+    }
+    header ul {
+      list-style: none;
+      display: flex;
+      gap: 15px;
+    }
+    header ul li a {
+      text-decoration: none;
+      color: #fff;
+      padding: 5px 10px;
+      border-radius: 5px;
+      transition: background 0.3s;
+    }
+    header ul li a:hover {
+      background: #fff;
+      color: #2b1055;
+    }
+    .content {
+      max-width: 800px;
+      margin: 50px auto;
+      padding: 20px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    }
+    .content h1 {
+      font-size: 2.5em;
+      margin-bottom: 20px;
+    }
+    .content p {
+      font-size: 1.2em;
+      line-height: 1.8;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="index.html" class="logo">FallCicada</a>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="index.html#resume">About Me</a></li>
+      <li><a href="blog_home.html">Blog</a></li>
+    </ul>
+  </header>
+  <div class="content">
+    <h1>Python 基础详解</h1>
+
+    <h2>1. Python 语法基础</h2>
+    <p>Python 是一种易于学习和使用的编程语言。以下是 Python 的基本语法：</p>
+    <pre><code class="language-python"># 变量声明
+x = 10
+name = "FallCicada"
+
+# 注释
+# 这是单行注释
+"""这是多行注释"""
+
+# 缩进
+if x > 5:
+    print("x 大于 5")</code></pre>
+
+    <h2>2. 数据类型</h2>
+    <p>Python 提供了多种内置数据类型：</p>
+    <ul>
+      <li><strong>数字类型：</strong>int, float, complex</li>
+      <li><strong>字符串：</strong>str</li>
+      <li><strong>列表：</strong>list</li>
+      <li><strong>元组：</strong>tuple</li>
+      <li><strong>字典：</strong>dict</li>
+    </ul>
+    <pre><code class="language-python"># 示例
+num = 42
+pi = 3.14
+text = "Hello, Python!"
+my_list = [1, 2, 3]
+my_tuple = (4, 5, 6)
+my_dict = {"key": "value"}</code></pre>
+
+    <h2>3. 控制结构</h2>
+    <p>Python 支持条件语句和循环：</p>
+    <pre><code class="language-python"># 条件语句
+if x > 0:
+    print("x 是正数")
+elif x == 0:
+    print("x 是零")
+else:
+    print("x 是负数")
+
+# 循环
+for i in range(5):
+    print(i)
+
+while x > 0:
+    print(x)
+    x -= 1</code></pre>
+
+    <h2>4. 函数</h2>
+    <p>函数是代码复用的重要工具：</p>
+    <pre><code class="language-python"># 函数定义
+def greet(name):
+    return f"Hello, {name}!"
+
+# 调用函数
+print(greet("FallCicada"))</code></pre>
+
+    <h2>5. 面向对象编程</h2>
+    <p>Python 是一种面向对象的语言，支持类和对象：</p>
+    <pre><code class="language-python"># 定义类
+class Person:
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+
+    def greet(self):
+        return f"Hi, I am {self.name} and I am {self.age} years old."
+
+# 创建对象
+person = Person("FallCicada", 25)
+print(person.greet())</code></pre>
+  </div>
+</body>
+</html>

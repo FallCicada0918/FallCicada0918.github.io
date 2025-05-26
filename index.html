@@ -1,0 +1,868 @@
+<!--
+ * @Description: 
+ * @Author: FallCicada
+ * @Date: 2024-11-02 00:04:57
+ * @LastEditors: FallCicada
+ * @LastEditTime: 2025-05-26 09:13:47
+ * @: 無限進步
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>落蝉</title>
+  <link rel="icon" href="./images/蝉鸣.png" type="image/png">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+    
+    body {
+      min-height: 100vh;
+      overflow-x: hidden;
+      background: linear-gradient(#2b1055, #7597de);
+    }
+    
+    header {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      padding: 30px 100px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 10000;
+    }
+    
+    header .logo {
+      color: #fff;
+      font-weight: 700;
+      text-decoration: none;
+      font-size: 2em;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+    
+    header ul {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    
+    header ul li {
+      list-style: none;
+      margin-left: 20px;
+    }
+    
+    header ul li a {
+      text-decoration: none;
+      padding: 6px 15px;
+      color: #fff;
+      border-radius: 20px;
+      transition: 0.3s;
+    }
+    
+    header ul li a:hover,
+    header ul li a.active {
+      background: #fff;
+      color: #2b1055;
+    }
+    
+    section {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      padding: 100px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+    }
+    
+    section::before {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      height: 100px;
+      background: linear-gradient(to top, #1c0522, transparent);
+      z-index: 1000;
+    }
+    
+    section img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      pointer-events: none;
+    }
+    
+    section img#moon {
+      mix-blend-mode: screen;
+    }
+    
+    section img#mountains_front {
+      z-index: 10;
+    }
+    
+    #text {
+      position: absolute;
+      right: -350px;
+      color: #fff;
+      white-space: nowrap;
+      font-size: 7.5vw;
+      z-index: 9;
+    }
+    
+    #btn {
+      text-decoration: none;
+      display: inline-block;
+      padding: 8px 30px;
+      border-radius: 40px;
+      background: #fff;
+      color: #2b1055;
+      font-size: 1.5em;
+      z-index: 9;
+      transform: translateY(100px);
+      transition: 0.3s;
+    }
+    
+    #btn:hover {
+      background: #2b1055;
+      color: #fff;
+      border: 2px solid #fff;
+    }
+    
+    .sec {
+      position: relative;
+      padding: 100px;
+      background: #1c0522;
+    }
+    
+    .sec h2 {
+      font-size: 3.5em;
+      margin-bottom: 10px;
+      color: #fff;
+      text-align: center;
+    }
+    
+    .sec p {
+      font-size: 1.2em;
+      color: #fff;
+      font-weight: 300;
+      line-height: 1.8;
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    /* Resume Section Styles */
+    .resume-container {
+      max-width: 1000px;
+      margin: 0 auto;
+      background: rgba(20, 10, 40, 0.85);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 30px;
+      box-shadow: 0 30px 60px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.1);
+      overflow: hidden;
+      backdrop-filter: blur(20px);
+      position: relative;
+    }
+
+    .resume-container::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: radial-gradient(circle at 30% 20%, rgba(123, 151, 222, 0.1) 0%, transparent 50%),
+                  radial-gradient(circle at 80% 80%, rgba(43, 16, 85, 0.1) 0%, transparent 50%);
+      pointer-events: none;
+    }
+    
+    .resume-header {
+      background: linear-gradient(45deg, rgba(43, 16, 85, 0.9) 0%, rgba(20, 10, 40, 0.9) 100%);
+      color: white;
+      padding: 50px 40px 30px;
+      text-align: left;
+      position: relative;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .resume-header h1 {
+      font-size: 3.2em;
+      margin-bottom: 5px;
+      position: relative;
+      z-index: 2;
+      font-weight: 300;
+      letter-spacing: 3px;
+      background: linear-gradient(45deg, #fff, #a8c8ec);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    
+    .resume-header p {
+      font-size: 1.1em;
+      opacity: 0.8;
+      position: relative;
+      z-index: 2;
+      font-weight: 300;
+      margin-left: 5px;
+      color: #b8c6db;
+    }
+    
+    .tabs {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      background: rgba(20, 10, 40, 0.3);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(10px);
+      position: relative;
+    }
+    
+    .tab {
+      padding: 25px 15px;
+      text-align: center;
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 400;
+      color: rgba(255, 255, 255, 0.6);
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      border-right: 1px solid rgba(255, 255, 255, 0.05);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    
+    .tab:last-child {
+      border-right: none;
+    }
+    
+    .tab.active {
+      color: #ffffff;
+      background: rgba(255, 255, 255, 0.05);
+      transform: translateY(-2px);
+    }
+    
+    .tab.active::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, #7b97de, transparent);
+    }
+    
+    .tab:hover:not(.active) {
+      background: rgba(255, 255, 255, 0.02);
+      color: rgba(255, 255, 255, 0.8);
+      transform: translateY(-1px);
+    }
+    
+    .content {
+      padding: 50px 40px;
+      min-height: 700px;
+      background: rgba(20, 10, 40, 0.4);
+      position: relative;
+    }
+    
+    .section {
+      display: none;
+      animation: slideInFromRight 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    
+    .section.active {
+      display: block;
+    }
+    
+    @keyframes slideInFromRight {
+      from { 
+        opacity: 0; 
+        transform: translateX(30px) scale(0.98);
+      }
+      to { 
+        opacity: 1; 
+        transform: translateX(0) scale(1);
+      }
+    }
+
+    .section h2 {
+      color: #ffffff;
+      margin-bottom: 40px;
+      font-size: 2.2em;
+      font-weight: 300;
+      letter-spacing: 2px;
+      text-align: center;
+      position: relative;
+      padding-bottom: 15px;
+    }
+
+    .section h2::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+    }
+    
+    .info-grid, .assessment-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+    }
+
+    .info-card, .assessment-card {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 20px;
+      padding: 30px;
+      backdrop-filter: blur(15px);
+      position: relative;
+      overflow: hidden;
+      transition: all 0.3s ease;
+    }
+
+    .info-card::before, .assessment-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, rgba(123, 151, 222, 0.6), transparent);
+    }
+
+    .info-card:hover, .assessment-card:hover {
+      transform: translateY(-5px);
+      background: rgba(255, 255, 255, 0.05);
+      border-color: rgba(255, 255, 255, 0.15);
+    }
+
+    .info-card h4, .assessment-card h4 {
+      color: #ffffff;
+      margin-bottom: 20px;
+      font-size: 1.3em;
+      font-weight: 400;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    .info-card p, .assessment-card p {
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 1em;
+      line-height: 1.8;
+      font-weight: 300;
+    }
+    
+    .info-card strong {
+      color: #7b97de;
+      font-weight: 500;
+    }
+
+    .skill-category {
+      margin-bottom: 35px;
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 25px;
+      padding: 30px;
+      backdrop-filter: blur(20px);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .skill-category::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 3px;
+      height: 100%;
+      background: linear-gradient(180deg, #7b97de, rgba(123, 151, 222, 0.3));
+    }
+    
+    .skill-category h4 {
+      color: #ffffff;
+      margin-bottom: 25px;
+      padding-bottom: 15px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      font-size: 1.2em;
+      font-weight: 400;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    
+    .skill-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+    
+    .skill-tag {
+      background: linear-gradient(135deg, rgba(123, 151, 222, 0.8), rgba(118, 75, 162, 0.8));
+      color: white;
+      padding: 12px 20px;
+      border-radius: 25px;
+      font-size: 0.9em;
+      font-weight: 400;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .skill-tag::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+      transition: left 0.5s ease;
+    }
+
+    .skill-tag:hover::before {
+      left: 100%;
+    }
+
+    .skill-tag:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(123, 151, 222, 0.3);
+    }
+    
+    .project-card {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 25px;
+      padding: 35px;
+      margin-bottom: 30px;
+      backdrop-filter: blur(20px);
+      transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .project-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, rgba(40, 167, 69, 0.6), transparent);
+    }
+    
+    .project-card:hover {
+      transform: translateY(-8px) scale(1.02);
+      background: rgba(255, 255, 255, 0.05);
+      border-color: rgba(255, 255, 255, 0.15);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+    }
+    
+    .project-title {
+      color: #ffffff;
+      font-size: 1.5em;
+      margin-bottom: 20px;
+      font-weight: 400;
+      letter-spacing: 1px;
+    }
+    
+    .project-tech {
+      background: rgba(40, 167, 69, 0.15);
+      color: #7dd3fc;
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-size: 0.85em;
+      display: inline-block;
+      margin: 3px 8px 15px 0;
+      border: 1px solid rgba(125, 211, 252, 0.2);
+      font-weight: 300;
+    }
+    
+    .project-card ul {
+      padding-left: 25px;
+      color: rgba(255, 255, 255, 0.8);
+      font-weight: 300;
+    }
+    
+    .project-card ul li {
+      margin-bottom: 12px;
+      line-height: 1.7;
+    }
+
+    .project-card ul li strong {
+      color: #7b97de;
+      font-weight: 500;
+    }
+    
+    @media (max-width: 768px) {
+      .tabs {
+        flex-direction: column;
+      }
+      .content {
+        padding: 20px;
+      }
+      .info-grid, .assessment-grid {
+        grid-template-columns: 1fr;
+      }
+      header {
+        padding: 20px;
+      }
+      section {
+        padding: 20px;
+      }
+      #text {
+        font-size: 10vw;
+        right: -200px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="#" class="logo">FallCicada</a>
+    <ul>
+      <li><a href="#" class="active">Home</a></li>
+      <li><a href="#resume">About Me</a></li>
+      <li><a href="blog_home.html">Blog</a></li>
+    </ul>
+  </header>
+  <section>
+    <img src="images/stars.png" id="stars">
+    <img src="images/moon.png" id="moon">
+    <img src="images/mountains_behind.png" id="mountains_behind">
+    <h2 id="text"><i>無限進步</i></h2>
+    <a href="#sec" id="btn">Explore</a>
+    <img src="images/mountains_front.png" id="mountains_front">
+  </section>
+  
+  <div class="sec" id="sec">
+
+    <!-- Resume Section -->
+    <div class="resume-container" id="resume">
+      <div class="resume-header">
+        <h1><b>张小年</b></h1>
+        <p>后端开发工程师</p>
+      </div>
+      
+      <div class="tabs">
+        <button class="tab active" onclick="showSection('summary')">基本概览</button>
+        <button class="tab" onclick="showSection('skills')">技术能力</button>
+        <button class="tab" onclick="showSection('projects')">项目经验</button>
+        <button class="tab" onclick="showSection('assessment')">自我评价</button>
+      </div>
+      
+      <div class="content">
+        <div id="summary" class="section active">
+          <h2>✦ 基本信息</h2>
+          <div class="info-grid">
+            <div class="info-card">
+              <h4>🌟 联系方式</h4>
+              <p><strong>🐈‍⬛ Github:</strong> <a href="https://github.com/FallCicada0918" target="_blank" style="color: #7b97de; text-decoration: none;">FallCicada0918</a></p>
+              <p><strong>📫 邮箱:</strong> fallcicada@foxmail.com</p>
+              <p><strong>专业方向:</strong> 信息与计算科学</p>
+              <p><strong>毕业院校:</strong> 内蒙古科技大学 (本科)</p>
+            </div>
+            <div class="info-card">
+              <h4>🎯 关于我</h4>
+              <p>热爱编程，专注于后端技术栈。喜欢编程，追求代码的优雅与效率。在学习中成长，在实践中进步，致力于成为一名优秀的软件工程师。</p>
+            </div>
+          </div>
+        </div>
+        
+        <div id="skills" class="section">
+          <h2>⚡ 技术栈</h2>
+          <div class="skill-category">
+            <h4>🚀 后端技术</h4>
+            <div class="skill-tags">
+              <span class="skill-tag">Java EE</span>
+              <span class="skill-tag">Spring Boot</span>
+              <span class="skill-tag">Spring Cloud</span>
+              <span class="skill-tag">Spring MVC</span>
+              <span class="skill-tag">MyBatis</span>
+              <span class="skill-tag">MyBatis Plus</span>
+            </div>
+          </div>
+          <div class="skill-category">
+            <h4>💾 数据技术</h4>
+            <div class="skill-tags">
+              <span class="skill-tag">MySQL</span>
+              <span class="skill-tag">Redis</span>
+              <span class="skill-tag">数据库优化</span>
+            </div>
+          </div>
+          <div class="skill-category">
+            <h4>🎨 前端技能</h4>
+            <div class="skill-tags">
+              <span class="skill-tag">JavaScript</span>
+              <span class="skill-tag">Vue.js</span>
+              <span class="skill-tag">HTML5/CSS3</span>
+              <span class="skill-tag">Element UI</span>
+            </div>
+          </div>
+          <div class="skill-category">
+            <h4>🛠️ 工具链</h4>
+            <div class="skill-tags">
+              <span class="skill-tag">IntelliJ IDEA</span>
+              <span class="skill-tag">Git版本控制</span>
+              <span class="skill-tag">Maven构建</span>
+              <span class="skill-tag">Docker容器</span>
+              <span class="skill-tag">Linux运维</span>
+              <span class="skill-tag">Nginx部署</span>
+            </div>
+          </div>
+          <div class="skill-category">
+            <h4>🔧 开发与部署</h4>
+            <div class="skill-tags">
+              <span class="skill-tag">IntelliJ IDEA</span>
+              <span class="skill-tag">Git/GitHub/Gitee</span>
+              <span class="skill-tag">Maven</span>
+              <span class="skill-tag">Docker</span>
+              <span class="skill-tag">Linux</span>
+              <span class="skill-tag">Nginx</span>
+            </div>
+          </div>
+          <div class="skill-category">
+            <h4>🧳 大数据技术</h4>
+            <div class="skill-tags">
+              <span class="skill-tag">Hadoop</span>
+              <span class="skill-tag">MapReduce编写</span>
+              <span class="skill-tag">Hive</span>
+              <span class="skill-tag">Flume</span>
+              <span class="skill-tag">Hbase</span>
+              <span class="skill-tag">Zookeeper</span>
+            </div>
+          </div>
+          <div class="skill-category">
+            <h4>📊 数据分析</h4>
+            <div class="skill-tags">
+              <span class="skill-tag">Python</span>
+              <span class="skill-tag">Pandas</span>
+              <span class="skill-tag">NumPy</span>
+              <span class="skill-tag">Matplotlib</span>
+              <span class="skill-tag">MATLAB</span>
+            </div>
+          </div>
+        </div>
+        
+        <div id="projects" class="section">
+          <h2>🔥 项目作品</h2>
+          <div class="project-card">
+            <div class="project-title">🛒 电商管理平台</div>
+            <div>
+              <span class="project-tech">Spring Boot</span>
+              <span class="project-tech">MyBatis Plus</span>
+              <span class="project-tech">MySQL</span>
+              <span class="project-tech">Redis</span>
+              <span class="project-tech">Vue.js</span>
+            </div>
+            <ul>
+              <li>构建前后端分离架构，实现<strong>10万+</strong>商品数据高效管理的RESTful API系统</li>
+              <li>运用Redis缓存策略优化查询性能，核心接口响应时间<strong>提升60%</strong></li>
+              <li>整合阿里云OSS服务，实现图片存储与CDN分发，显著改善用户体验</li>
+              <li>主导权限管理、商品分类、订单流程等关键业务模块的架构设计与实现</li>
+            </ul>
+          </div>
+          <div class="project-card">
+            <div class="project-title">⚡ 微服务管理系统</div>
+            <div>
+              <span class="project-tech">Spring Cloud</span>
+              <span class="project-tech">Eureka</span>
+              <span class="project-tech">Gateway</span>
+              <span class="project-tech">Kafka</span>
+              <span class="project-tech">Docker</span>
+            </div>
+            <ul>
+              <li>采用Spring Cloud微服务生态，构建包含服务发现、配置中心、API网关的完整架构</li>
+              <li>通过Gateway实现统一入口，处理路由转发、身份认证、负载均衡等横切关注点</li>
+              <li>运用分布式锁机制保障高并发环境下的数据一致性与业务正确性</li>
+              <li>集成Kafka消息中间件处理异步通信，实现业务模块间的松耦合设计</li>
+            </ul>
+          </div>
+        </div>
+        
+        <div id="assessment" class="section">
+          <h2>💫 个人特质</h2>
+          <div class="assessment-grid">
+            <div class="assessment-card">
+              <h4>🎓 技术实力</h4>
+              <p>拥有扎实的Java基础和Spring生态的深度实践经验。注重代码品质，坚持规范化开发流程，重视技术文档的完善与维护。</p>
+            </div>
+            <div class="assessment-card">
+              <h4>🧩 解决问题</h4>
+              <p>善于分析复杂技术难题，具备系统化思维和架构设计能力。能够站在全局视角思考问题，平衡技术实现与业务需求。</p>
+            </div>
+            <div class="assessment-card">
+              <h4>📚 持续学习</h4>
+              <p>对新技术保持敏锐嗅觉，紧跟行业发展动态。拥有快速学习新知识的能力，能够迅速适应技术变革和项目需求。</p>
+            </div>
+            <div class="assessment-card">
+              <h4>🤝 协作沟通</h4>
+              <p>具备优秀的团队合作精神和沟通表达能力。善于与团队成员协作，能够高效推进项目进展，共同达成既定目标。</p>
+            </div>
+          </div>
+        </div>tag">Element UI</span>
+            </div>
+          </div>
+        </div>
+        
+        <div id="projects" class="section">
+            <h2>🚀 项目经验</h2>
+            <div class="project-card">
+                <div class="project-title">🛒 电商网站后台管理系统</div>
+                <div>
+                    <span class="project-tech">Spring Boot</span>
+                    <span class="project-tech">MyBatis Plus</span>
+                    <span class="project-tech">MySQL</span>
+                    <span class="project-tech">Redis</span>
+                    <span class="project-tech">Vue.js</span>
+                </div>
+                <ul>
+                    <li>采用前后端分离架构，设计并实现支持<strong>10万+</strong>商品管理的RESTful API。</li>
+                    <li>引入Redis缓存优化商品查询逻辑，关键接口响应速度<strong>提升60%</strong>。</li>
+                    <li>集成阿里云OSS实现图片上传和CDN加速，提升用户访问体验。</li>
+                    <li>负责用户权限、商品分类、订单处理等核心模块的设计与开发。</li>
+                </ul>
+            </div>
+
+            <div class="project-card">
+                <div class="project-title">⚙️ 若依后台管理系统</div>
+                <div>
+                    <span class="project-tech">RuoYi框架</span>
+                    <span class="project-tech">Spring Boot</span>
+                    <span class="project-tech">MyBatis</span>
+                    <span class="project-tech">Spring Security</span>
+                    <span class="project-tech">Vue.js</span>
+                </div>
+                <ul>
+                    <li>基于若依框架进行二次开发，定制企业级权限管理系统</li>
+                    <li>优化代码生成器，提高开发效率<strong>30%</strong>，实现业务模块快速构建</li>
+                    <li>重构数据权限控制逻辑，解决多部门数据隔离与共享难题</li>
+                    <li>设计并实现工作流审批模块，支持复杂业务流转和可视化流程配置</li>
+                </ul>
+            </div>
+            
+            <div class="project-card">
+                <div class="project-title">🌐 分布式微服务系统</div>
+                <div>
+                    <span class="project-tech">Spring Cloud</span>
+                    <span class="project-tech">Eureka</span>
+                    <span class="project-tech">Gateway</span>
+                    <span class="project-tech">Kafka</span>
+                    <span class="project-tech">Docker</span>
+                </div>
+                <ul>
+                    <li>基于Spring Cloud微服务架构，实现服务注册、发现、配置与统一网关。</li>
+                    <li>使用Gateway网关统一处理请求路由、权限校验和负载均衡。</li>
+                    <li>引入分布式锁解决高并发场景下的数据一致性问题。</li>
+                    <li>集成Kafka消息队列处理异步任务，实现核心业务解耦。</li>
+                </ul>
+            </div>
+
+            <div class="project-card">
+                <div class="project-title">🕸️ 网络数据采集分析系统</div>
+                <div>
+                    <span class="project-tech">Python</span>
+                    <span class="project-tech">Scrapy</span>
+                    <span class="project-tech">BeautifulSoup</span>
+                    <span class="project-tech">Pandas</span>
+                    <span class="project-tech">MongoDB</span>
+                </div>
+                <ul>
+                    <li>设计并实现高性能爬虫框架，支持<strong>多线程</strong>并发采集和<strong>IP代理池</strong>自动切换</li>
+                    <li>开发反反爬策略，模拟浏览器行为和指纹特征，突破目标网站防护</li>
+                    <li>构建数据清洗和预处理管道，实现原始数据到结构化信息的高效转换</li>
+                    <li>集成数据可视化模块，支持关键指标实时监控和趋势分析</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div id="assessment" class="section">
+          <h2>🌟 自我评价</h2>
+          <div class="assessment-grid">
+            <div class="assessment-card">
+              <h4>💡 专业素养</h4>
+              <p>具备扎实的Java编程基础和丰富的Spring框架实战经验。对代码质量有高要求，遵循良好的编码规范和文档编写习惯。</p>
+            </div>
+            <div class="assessment-card">
+              <h4>🧠 思维能力</h4>
+              <p>擅长分析和解决复杂技术问题，具备良好的系统性思维和设计能力，能够从全局角度思考系统架构和业务实现。</p>
+            </div>
+            <div class="assessment-card">
+              <h4>🌱 学习与成长</h4>
+              <p>热衷于学习和应用新技术，对行业发展趋势保持高度关注，具备快速学习和适应变化的能力。</p>
+            </div>
+            <div class="assessment-card">
+              <h4>🤝 团队协作</h4>
+              <p>拥有出色的沟通能力和团队协作精神，能够积极融入团队，与同事高效合作，共同完成项目目标。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <script>
+    let stars = document.getElementById('stars')
+    let moon = document.getElementById('moon')
+    let mountains_behind = document.getElementById('mountains_behind')
+    let text = document.getElementById('text')
+    let btn = document.getElementById('btn')
+    let mountains_front = document.getElementById('mountains_front')
+    let header = document.querySelector('header')
+    
+    window.addEventListener('scroll', function(){
+      let value = window.scrollY;
+      stars.style.left = value * 0.25 + 'px'
+      moon.style.top = value * 1.05 + 'px'
+      mountains_behind.style.top = value * 0.5 + 'px'
+      mountains_front.style.top = value * 0 + 'px'
+      text.style.marginRight = value * 4 + 'px'
+      text.style.marginTop = value * 1.5 + 'px'
+      btn.style.marginTop = value * 1.5 + 'px'
+      header.style.top = value * 0.5 + 'px'
+    })
+
+    function showSection(sectionId) {
+      // Hide all sections
+      const sections = document.querySelectorAll('.section');
+      sections.forEach(section => section.classList.remove('active'));
+      
+      // Deactivate all tabs
+      const tabs = document.querySelectorAll('.tab');
+      tabs.forEach(tab => tab.classList.remove('active'));
+      
+      // Show the selected section
+      document.getElementById(sectionId).classList.add('active');
+      
+      // Activate the corresponding tab
+      const activeTab = document.querySelector(`.tab[onclick="showSection('${sectionId}')"]`);
+      if (activeTab) {
+        activeTab.classList.add('active');
+      }
+    }
+
+    // Initialize the default active tab
+    document.addEventListener('DOMContentLoaded', () => {
+      showSection('summary');
+    });
+  </script>
+</body>
+</html>
